@@ -20,9 +20,18 @@ public class BookController {
     @Get("/") // <3>
     public Flowable<BookRecommendation> index() {
         return bookCatalogueOperations.findAll()
-                .flatMapMaybe(b -> bookInventoryOperations.stock(b.getIsbn())
-                                    .filter(HttpResponse::body)
-                                    .map(rsp -> b))
-                .map(book -> new BookRecommendation(book.getName()));
+            .flatMapMaybe(b -> bookInventoryOperations.stock(b.getIsbn())
+                          .onErrorResumeNext(throwable -> {
+                            if (throwable instanceof HttpClientResponseException) {
+                                HttpClientResponseException ex = (HttpClientResponseException) throwable;
+                                if (ex.getResponse().getStatus().equals(HttpStatus.NOT_FOUND)) {
+                                    return Single.just(HttpResponse.ok(Boolean.FALSE));
+                                }
+                            }
+                            return Single.error(throwable);
+                        })
+                        .filter(HttpResponse::body)
+                        .map(rsp -> b)
+                ).map(book -> new BookRecommendation(book.getName()));
     }
 }
