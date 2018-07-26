@@ -1,0 +1,28 @@
+Modify `build.gradle` to add `discovery-client` dependency.
+
+[source,java]
+.bookinventory/build.gradle
+----
+dependencies {
+    ...
+    ..
+    .
+include::{sourceDir}/bookinventory/build.gradle[tag=discoveryclient]
+}
+----
+
+Also, append to `bookinventory`.`application.yml` the following snippet:
+
+[source,yaml]
+.bookinventory/src/main/resources/application.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application.yml[tag=eureka]
+----
+
+Disable Eureka registration in tests:
+
+[source,yaml]
+.bookinventory/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application-test.yml[tag=eureka]
+----

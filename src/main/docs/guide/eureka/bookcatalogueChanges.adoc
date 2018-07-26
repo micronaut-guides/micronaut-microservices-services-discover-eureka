@@ -1,0 +1,30 @@
+Modify `build.gradle` to add `discovery-client` dependency.
+
+[source,java]
+.bookcatalogue/build.gradle
+----
+dependencies {
+    ...
+    ..
+    .
+include::{sourceDir}/bookcatalogue/build.gradle[tag=discoveryclient]
+}
+----
+
+Append to `bookcatalogue` service `application.yml` the following snippet:
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application.yml[tag=eureka]
+----
+
+Previous configuration registers a Micronaut app with Eureka with minimal configuration. Discover a more complete list of Configuration options at https://docs.micronaut.io/snapshot/api/io/micronaut/discovery/eureka/EurekaConfiguration.html[EurekaConfiguration].
+
+Disable Eureka registration in tests:
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application-test.yml[tag=eureka]
+----

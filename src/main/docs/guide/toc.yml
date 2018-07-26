@@ -1,0 +1,18 @@
+gettingStarted: 
+  title: Getting Started
+  requirements: What you will need
+  solution: Solution
+writingTheApp:
+  title: Writing the App
+  bookcatalogue: Catalogue Microservice
+  bookinventory: Inventory Microservice
+  bookrecommendation: Recommendation Microservice
+runningTheApp: Running the app
+eureka:
+  title: Eureka and Micronaut
+  eurekaserver: Eureka Server
+  micronautandeureka: Integrate Eureka
+  bookcatalogueChanges: Book Catalogue
+  bookinventoryChanges: Book Inventory
+  bookrecommendationChanges: Book Recommendation
+  runningTheAppAfterEureka: Running the App

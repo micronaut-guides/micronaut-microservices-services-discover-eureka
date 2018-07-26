@@ -1,0 +1,55 @@
+Create the `bookcatalogue` microservice:
+
+`mn create-app example.micronaut.bookcatalogue.bookcatalogue`
+
+The previous command creates a folder named `bookcatalogue` and a Micronaut app inside it with
+default package: `example.micronaut.bookcatalogue`.
+
+[source,java]
+.bookcatalogue/src/main/java/example/micronaut/bookcatalogue/BooksController.java
+----
+include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue/BooksController.java[]
+----
+
+<1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<2> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
+<3> You can return reactive types from your controller methods.
+
+The previous controller responds a `Flowable<Book>`. Create the `Book` POJO:
+
+[source,java]
+.bookcatalogue/src/main/java/example/micronaut/bookcatalogue/Book.java
+----
+include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue/Book.java[]
+----
+
+Write a test:
+
+[source,java]
+.bookcatalogue/src/test/java/example/micronaut/bookcatalogue/BooksControllerTest.java
+----
+include::{sourceDir}/bookcatalogue/src/test/java/example/micronaut/bookcatalogue/BooksControllerTest.java[]
+----
+
+<1> For JUnit you can write methods to start and stop the server for the scope of the test
+
+Edit `application.yml`
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application.yml[tag=mn]
+----
+
+<1> Configure the application name. The app name will be use by the discovery service.
+<2> Configure the app to listen at port 8081
+
+Create a file named `application-test.yml` which is used in the test environment:
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application-test.yml[tag=port]
+----
+
+<1> Start the micronaut microservice at a random port when running the tests.

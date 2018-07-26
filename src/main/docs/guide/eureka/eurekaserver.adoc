@@ -1,0 +1,9 @@
+http://cloud.spring.io/spring-cloud-netflix/[Spring-Cloud-Netflix] provides a very neat way to bootstrap Eureka.
+To bring up Eureka server using Spring-Cloud-Netflix:
+
+* Clone the https://github.com/spring-cloud-samples/eureka[sample Eureka server application].
+* Run this project as a Spring Boot app (e.g. import into IDE and run
+  main method, or use `mvn spring-boot:run` or `gradle bootRun` or `./gradlew bootRun`). It will start up on port
+  8761 and serve the Eureka API from `/eureka`.
+
+This <<solution, tutorial solution>> contains a folder named `eureka` with the cloned sample Eureka server application.

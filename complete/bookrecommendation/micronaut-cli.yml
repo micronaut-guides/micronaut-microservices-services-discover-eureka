@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: example.micronaut.bookrecommendation
+---
+testFramework: junit
+sourceLanguage: java

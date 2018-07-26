@@ -1,0 +1,3 @@
+include 'bookcatalogue'
+include 'bookinventory'
+include 'bookrecommendation'
