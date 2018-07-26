@@ -16,3 +16,5 @@ eureka:
   bookinventoryChanges: Book Inventory
   bookrecommendationChanges: Book Recommendation
   runningTheAppAfterEureka: Running the App
+nextSteps:
+  title: Next Steps
