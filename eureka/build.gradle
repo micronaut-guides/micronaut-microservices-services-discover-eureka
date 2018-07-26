@@ -1,16 +1,20 @@
 
 buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
     repositories {
-        jcenter()
-        maven { url "http://repo.spring.io/libs-snapshot-local" }
+        mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
-apply plugin: 'spring-boot'
-apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 ext {
     name = 'Eureka Server'
@@ -20,26 +24,21 @@ ext {
 }
 
 repositories {
-    jcenter()
-    maven { url 'https://repo.spring.io/release/' }
-    maven { url "http://repo.spring.io/libs-snapshot-local" }
-    maven { url "http://repo.spring.io/libs-milestone-local" }
-    maven { url "http://repo.spring.io/libs-release-local" }
+    mavenCentral()
+}
+
+ext {
+    springCloudVersion = 'Finchley.RELEASE'
+}
+
+
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {
-	imports { 
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.BUILD-SNAPSHOT"
-	}
-}
-
-dependencies {
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server'
-
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile "junit:junit"
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
