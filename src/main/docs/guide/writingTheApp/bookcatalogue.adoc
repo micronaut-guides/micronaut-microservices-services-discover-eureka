@@ -32,6 +32,8 @@ include::{sourceDir}/bookcatalogue/src/test/java/example/micronaut/bookcatalogue
 ----
 
 <1> For JUnit you can write methods to start and stop the server for the scope of the test
+<2> It is easy to create HTTP requests with a fluid API.
+<3> Parse easily JSON into Java objects.
 
 Edit `application.yml`
 

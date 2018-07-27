@@ -20,7 +20,7 @@ class AcceptanceSpec extends Specification {
     @AutoCleanup
     RxHttpClient client = applicationContext.createBean(RxHttpClient, 'http://localhost:8080')
 
-    def "verifies three microservices collaborate together with consul service registration"() {
+    def "verifies three microservices collaborate together with eureka service registration"() {
 
         when:
         PollingConditions conditions = new PollingConditions(timeout: 5)
