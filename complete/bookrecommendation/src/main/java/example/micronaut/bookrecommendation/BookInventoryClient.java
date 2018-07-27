@@ -1,10 +1,11 @@
 //tag::packageandimports[]
 package example.micronaut.bookrecommendation;
 
-import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.client.Client;
-import io.reactivex.Single;
+import io.reactivex.Maybe;
+
+import javax.validation.constraints.NotBlank;
 //end::packageandimports[]
 
 /*
@@ -19,6 +20,6 @@ import io.reactivex.Single;
 public interface BookInventoryClient extends BookInventoryOperations {
 
     @Get("/books/stock/{isbn}")
-    Single<HttpResponse<Boolean>> stock(String isbn);
+    Maybe<Boolean> stock(@NotBlank String isbn);
 }
 //end::clazz[]

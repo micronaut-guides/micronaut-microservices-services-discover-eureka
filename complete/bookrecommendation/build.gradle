@@ -47,6 +47,8 @@ dependencies {
     //tag::discoveryclient[]
     runtime "io.micronaut:discovery-client"
     //end::discoveryclient[]
+
+    compile "io.micronaut:management"
 }
 
 shadowJar {

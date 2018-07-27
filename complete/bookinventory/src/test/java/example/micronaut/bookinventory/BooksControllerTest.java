@@ -30,10 +30,10 @@ public class BooksControllerTest {
 
     @AfterClass // <1>
     public static void stopServer() {
-        if(server != null) {
+        if (server != null) {
             server.stop();
         }
-        if(rxHttpClient != null) {
+        if (rxHttpClient != null) {
             rxHttpClient.stop();
         }
     }
@@ -52,8 +52,12 @@ public class BooksControllerTest {
         assertEquals(rsp.status(), HttpStatus.OK);
         assertTrue(rsp.body());
 
+    }
+
+    @Test
+    public void testBooksControllerWithNonExistingIsbn() {
         HttpClientResponseException ex = null;
-        noExceptionThrown = true;
+        boolean noExceptionThrown = true;
         try {
             rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/XXXXX"), Boolean.class);
         } catch (HttpClientResponseException e) {
@@ -66,5 +70,6 @@ public class BooksControllerTest {
         HttpResponse response = ex.getResponse();
 
         assertEquals(response.getStatus(), HttpStatus.NOT_FOUND);
+
     }
 }
