@@ -53,6 +53,10 @@ dependencies {
     //end::discoveryclient[]
 
     compile "io.micronaut:management"
+
+    //tag::hamcrest[]
+    testCompile "org.hamcrest:hamcrest-all:$hamcrestAllVersion"
+    //end::hamcrest[]
 }
 
 shadowJar {

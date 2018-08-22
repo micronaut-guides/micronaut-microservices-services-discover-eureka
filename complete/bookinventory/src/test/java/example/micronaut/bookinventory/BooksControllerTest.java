@@ -9,10 +9,13 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException;
 import io.micronaut.runtime.server.EmbeddedServer;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BooksControllerTest {
@@ -40,36 +43,18 @@ public class BooksControllerTest {
 
     @Test
     public void testBooksController() {
-        boolean noExceptionThrown = true;
-        HttpResponse<Boolean> rsp = null;
-        try {
-            rsp = rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/1491950358"), Boolean.class);
-        } catch (HttpClientResponseException e) {
-            noExceptionThrown = false;
-        }
-
-        assertTrue(noExceptionThrown);
+        HttpResponse<Boolean> rsp = rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/1491950358"), Boolean.class);
         assertEquals(rsp.status(), HttpStatus.OK);
         assertTrue(rsp.body());
-
     }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testBooksControllerWithNonExistingIsbn() {
-        HttpClientResponseException ex = null;
-        boolean noExceptionThrown = true;
-        try {
-            rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/XXXXX"), Boolean.class);
-        } catch (HttpClientResponseException e) {
-            noExceptionThrown = false;
-            ex = e;
-        }
-
-        assertFalse(noExceptionThrown);
-
-        HttpResponse response = ex.getResponse();
-
-        assertEquals(response.getStatus(), HttpStatus.NOT_FOUND);
-
+        thrown.expect(HttpClientResponseException.class);
+        thrown.expect(hasProperty("response", hasProperty("status", is(HttpStatus.NOT_FOUND))));
+        rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/XXXXX"), Boolean.class);
     }
 }
