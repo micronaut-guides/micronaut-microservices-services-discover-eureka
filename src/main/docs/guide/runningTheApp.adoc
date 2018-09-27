@@ -28,6 +28,7 @@ bookinventory $ ./gradlew run
 
 Run `bookrecommendation` microservice:
 
+[source,bash]
 ----
 bookrecommendation $ ./gradlew run
 Starting a Gradle Daemon, 2 busy and 2 stopped Daemons could not be reused, use --status for details
