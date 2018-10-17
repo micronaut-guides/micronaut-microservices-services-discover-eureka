@@ -6,8 +6,8 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.5.2'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
 
-    testCompile "io.micronaut:runtime-groovy:$micronautVersion"
-    testCompile "io.micronaut:http-client:$micronautVersion"
+    testCompile "io.micronaut:micronaut-runtime-groovy:$micronautVersion"
+    testCompile "io.micronaut:micronaut-http-client:$micronautVersion"
 }
 
 repositories {

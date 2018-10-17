@@ -29,30 +29,30 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom "io.micronaut:bom:$micronautVersion"
+        mavenBom "io.micronaut:micronaut-bom:$micronautVersion"
     }
 }
 
 dependencies {
-    annotationProcessor "io.micronaut:inject-java"
-    compile "io.micronaut:http-client"
-    compile "io.micronaut:http-server-netty"
-    compile "io.micronaut:inject"
-    compile "io.micronaut:runtime"
-    compileOnly "io.micronaut:inject-java"
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    compile "io.micronaut:micronaut-http-client"
+    compile "io.micronaut:micronaut-http-server-netty"
+    compile "io.micronaut:micronaut-inject"
+    compile "io.micronaut:micronaut-runtime"
+    compileOnly "io.micronaut:micronaut-inject-java"
     runtime "ch.qos.logback:logback-classic:1.2.3"
-    testCompile "io.micronaut:inject-java"
+    testCompile "io.micronaut:micronaut-inject-java"
     testCompile "junit:junit:4.12"
     //tag::validation[]
-    compile "io.micronaut:validation"
-    compile "io.micronaut.configuration:hibernate-validator"
+    compile "io.micronaut:micronaut-validation"
+    compile "io.micronaut.configuration:micronaut-hibernate-validator"
     //end::validation[]
 
     //tag::discoveryclient[]
-    runtime "io.micronaut:discovery-client"
+    runtime "io.micronaut:micronaut-discovery-client"
     //end::discoveryclient[]
 
-    compile "io.micronaut:management"
+    compile "io.micronaut:micronaut-management"
 
     //tag::hamcrest[]
     testCompile "org.hamcrest:hamcrest-all:$hamcrestAllVersion"
