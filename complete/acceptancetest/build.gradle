@@ -12,6 +12,7 @@ dependencies {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 apply from: "${rootProject.projectDir}/gradle/testVerbose.gradle"
