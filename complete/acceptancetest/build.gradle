@@ -1,18 +1,26 @@
 plugins {
-    id 'groovy'
+  id "io.spring.dependency-management" version "1.0.6.RELEASE"
+  id 'groovy'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "io.micronaut:micronaut-bom:$micronautVersion"
+    }
 }
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.5.2'
     testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
 
-    testCompile "io.micronaut:micronaut-runtime-groovy:$micronautVersion"
-    testCompile "io.micronaut:micronaut-http-client:$micronautVersion"
-}
-
-repositories {
-    jcenter()
-    mavenCentral()
+    testCompile "io.micronaut:micronaut-runtime-groovy"
+    testCompile "io.micronaut:micronaut-http-client"
 }
 
 apply from: "${rootProject.projectDir}/gradle/testVerbose.gradle"
