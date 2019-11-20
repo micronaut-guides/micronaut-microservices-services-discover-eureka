@@ -1,41 +1,24 @@
 package example.micronaut.bookcatalogue;
 
-import io.micronaut.context.ApplicationContext;
 import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
-import io.micronaut.http.client.RxStreamingHttpClient;
-import io.micronaut.runtime.server.EmbeddedServer;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import io.micronaut.http.client.annotation.Client;
+import io.micronaut.test.annotation.MicronautTest;
+import org.junit.jupiter.api.Test;
 
+import javax.inject.Inject;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@MicronautTest
 public class BooksControllerTest {
-    private static EmbeddedServer server;
-    private static HttpClient client;
 
-    @BeforeClass // <1>
-    public static void setupServer() {
-        server = ApplicationContext.run(EmbeddedServer.class);
-        client = server
-                .getApplicationContext()
-                .createBean(HttpClient.class, server.getURL());
-    }
-
-    @AfterClass // <1>
-    public static void stopServer() {
-        if(server != null) {
-            server.stop();
-        }
-        if(client != null) {
-            client.stop();
-        }
-    }
+    @Inject
+    @Client("/")
+    HttpClient client;
 
     @Test
     public void testRetrieveBooks() {

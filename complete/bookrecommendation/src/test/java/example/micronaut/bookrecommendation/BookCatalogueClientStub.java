@@ -16,5 +16,6 @@ public class BookCatalogueClientStub implements BookCatalogueOperations {
     public Flowable<Book> findAll() {
         Book buildingMicroservices = new Book("1491950358", "Building Microservices");
         Book releaseIt = new Book("1680502395", "Release It!");
-        return Flowable.just(buildingMicroservices, releaseIt);    }
+        return Flowable.just(buildingMicroservices, releaseIt);
+    }
 }
