@@ -82,6 +82,12 @@ Create `@Fallback` alternatives in the `test` classpath.
 include::{sourceDir}/bookrecommendation/src/test/java/example/micronaut/bookrecommendation/BookInventoryClientStub.java[]
 ----
 
+<1> Make this fallback class to be effective only when the micronaut environment __TEST__ is active
+<2> Here we arbitrarily decided that if everything else fails, that book's `stock` would be true
+<3> Similarly, we decided that other book's `stock` method would be false
+<4> Finally, any other book will have their `stock` method return an empty value
+
+
 [source,java]
 .bookrecommendation/src/test/java/example/micronaut/bookrecommendation/BookCatalogueClientStub.java
 ----
@@ -95,8 +101,6 @@ Write a test:
 ----
 include::{sourceDir}/bookrecommendation/src/test/java/example/micronaut/bookrecommendation/BookControllerTest.java[]
 ----
-
-<1> For JUnit you can write methods to start and stop the server for the scope of the test
 
 Edit `application.yml`
 

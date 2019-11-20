@@ -1,19 +1,15 @@
-Run the eureka server:
-
-`eureka $ ./gradle bootRun`
-
 Run `bookcatalogue` microservice:
 
 [source,bash]
 ----
 bookcatalogue $ ./gradlew run
- Starting a Gradle Daemon, 2 stopped Daemons could not be reused, use --status for details
+Starting a Gradle Daemon, 2 stopped Daemons could not be reused, use --status for details
 
- > Task :bookcatalogue:compileJava
- Note: Creating bean classes for 1 type elements
+> Task :bookcatalogue:compileJava
+Note: Creating bean classes for 1 type elements
 
- > Task :bookcatalogue:run
- 14:28:34.034 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 499ms. Server Running: http://localhost:8081
+> Task :bookcatalogue:run
+14:28:34.034 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 499ms. Server Running: http://localhost:8081
 ----
 
 Run `bookinventory` microservice:
@@ -21,17 +17,18 @@ Run `bookinventory` microservice:
 [source,bash]
 ----
 bookinventory $ ./gradlew run
- Starting a Gradle Daemon, 2 stopped Daemons could not be reused, use --status for details
+Starting a Gradle Daemon, 2 stopped Daemons could not be reused, use --status for details
 
- > Task :bookinventory:compileJava
- Note: Creating bean classes for 1 type elements
+> Task :bookinventory:compileJava
+Note: Creating bean classes for 1 type elements
 
- > Task :bookcatalogue:run
- 14:31:13.104 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 499ms. Server Running: http://localhost:8082
+> Task :bookinventory:run
+14:31:13.104 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 506ms. Server Running: http://localhost:8082
 ----
 
 Run `bookrecommendation` microservice:
 
+[source,bash]
 ----
 bookrecommendation $ ./gradlew run
 Starting a Gradle Daemon, 2 busy and 2 stopped Daemons could not be reused, use --status for details

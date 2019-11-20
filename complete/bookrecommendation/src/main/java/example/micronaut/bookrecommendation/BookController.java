@@ -16,7 +16,6 @@ public class BookController {
         this.bookInventoryOperations = bookInventoryOperations;
     }
 
-
     @Get("/") // <3>
     public Flowable<BookRecommendation> index() {
         return bookCatalogueOperations.findAll()

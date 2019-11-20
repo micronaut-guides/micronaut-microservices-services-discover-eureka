@@ -1,16 +1,20 @@
 package example.micronaut.bookinventory;
 
+import io.micronaut.core.annotation.Introspected;
+
 import java.util.Objects;
 
+@Introspected
 public class BookInventory {
     private String isbn;
     private Integer stock;
 
-    public BookInventory() {}
+    public BookInventory() {
+    }
 
     public BookInventory(String isbn, Integer stock) {
         this.isbn = isbn;
-        this.stock =  stock;
+        this.stock = stock;
     }
 
     public String getIsbn() {
@@ -40,7 +44,6 @@ public class BookInventory {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(isbn, stock);
     }
 }
