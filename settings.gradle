@@ -1,4 +1,4 @@
 include 'complete'
-include 'complete/bookcatalogue'
-include 'complete/bookinventory'
-include 'complete/bookrecommendation'
+include 'complete:bookcatalogue'
+include 'complete:bookinventory'
+include 'complete:bookrecommendation'
