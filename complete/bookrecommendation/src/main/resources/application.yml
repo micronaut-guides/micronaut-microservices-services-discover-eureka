@@ -1,9 +1,9 @@
 #tag::mn[]
 micronaut:
-    application:
-        name: bookrecommendation # <1>
-    server:
-        port: 8080 # <2>
+  application:
+    name: bookrecommendation # <1>
+  server:
+    port: 8080 # <2>
 #end::mn[]
 #tag::eureka[]
 eureka:
