@@ -1,1 +1,1 @@
-Read more about https://docs.micronaut.io/snapshot/guide/index.html#serviceDiscoveryEureka[Eureka Support] inside Micronaut.
+Read more about https://docs.micronaut.io/latest/guide/index.html#serviceDiscoveryEureka[Eureka Support] inside Micronaut.

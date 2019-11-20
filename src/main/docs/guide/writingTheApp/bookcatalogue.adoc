@@ -11,7 +11,7 @@ default package: `example.micronaut.bookcatalogue`.
 include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue/BooksController.java[]
 ----
 
-<1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<1> The class is defined as a controller with the http://docs.micronaut.io/latest/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
 <2> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
 
 The previous controller responds a `Flowable<Book>`. Create the `Book` POJO:

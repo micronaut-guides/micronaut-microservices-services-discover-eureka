@@ -22,7 +22,7 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookCatalogueClient.java[tag=clazz]
 ----
 
-<1> Use `@Client` to use https://docs.micronaut.io/snapshot/guide/index.html#clientAnnotation[declarative HTTP Clients]
+<1> Use `@Client` to use https://docs.micronaut.io/latest/guide/index.html#clientAnnotation[declarative HTTP Clients]
 
 The client returns a POJO. Create it in the `bookrecommendation`:
 [source,java]
@@ -48,7 +48,7 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java[tag=clazz]
 ----
 
-<1> Use `@Client` to use https://docs.micronaut.io/snapshot/guide/index.html#clientAnnotation[declarative HTTP Clients]
+<1> Use `@Client` to use https://docs.micronaut.io/latest/guide/index.html#clientAnnotation[declarative HTTP Clients]
 
 Create a Controller which injects both clients.
 
@@ -58,7 +58,7 @@ Create a Controller which injects both clients.
 include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookController.java[]
 ----
 
-<1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<1> The class is defined as a controller with the http://docs.micronaut.io/latest/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
 <2> Constructor injection
 <3> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
 
@@ -72,7 +72,7 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 
 `BookCatalogueClient` and `BookInventoryClient` will fail to consume the `bookcatalogue` and `bookinventory` during the tests phase.
 
-Using the https://docs.micronaut.io/snapshot/guide/index.html#clientFallback[@Fallback] annotation you can declare a fallback implementation of a client that will be picked up and used once all possible retries have been exhausted
+Using the https://docs.micronaut.io/latest/guide/index.html#clientFallback[@Fallback] annotation you can declare a fallback implementation of a client that will be picked up and used once all possible retries have been exhausted
 
 Create `@Fallback` alternatives in the `test` classpath.
 
