@@ -4,7 +4,6 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.core.type.Argument
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.RxHttpClient
-import io.micronaut.runtime.server.EmbeddedServer
 import spock.lang.AutoCleanup
 import spock.lang.IgnoreIf
 import spock.lang.Shared
@@ -52,7 +51,7 @@ class AcceptanceSpec extends Specification {
         }
 
         when:
-        List<BookRecommendation> books = client.toBlocking().retrieve(HttpRequest.GET('/books'), Argument.of(List, BookRecommendation))
+        List<BookRecommendation> books = client.toBlocking().retrieve(HttpRequest.GET('/books'), Argument.listOf(List, BookRecommendation))
 
         then:
         books

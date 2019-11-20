@@ -23,7 +23,7 @@ public class BooksControllerTest {
     @Test
     public void testRetrieveBooks() {
         HttpRequest request = HttpRequest.GET("/books"); // <3>
-        List books = client.toBlocking().retrieve(request, Argument.of(List.class, Book.class));
+        List books = client.toBlocking().retrieve(request, Argument.listOf(Book.class)); // <4>
         assertEquals(3, books.size());
         assertTrue(books.contains(new Book("1491950358", "Building Microservices")));
         assertTrue(books.contains(new Book("1680502395", "Release It!")));
