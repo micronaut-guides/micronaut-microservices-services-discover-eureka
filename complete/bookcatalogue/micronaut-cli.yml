@@ -1,5 +1,6 @@
-profile: service
-defaultPackage: example
----
+applicationType: default
+defaultPackage: example.micronaut.bookcatalogue
 testFramework: junit
 sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, discovery-consul, docker, file-watch, gradle, http-client, java, java-application, junit, logback, netty-server, readme, shade, yaml]

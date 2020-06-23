@@ -13,8 +13,8 @@ public class BooksController {
 
     @Produces(MediaType.TEXT_PLAIN) // <2>
     @Get("/stock/{isbn}") // <3>
-    public Boolean stock(@NotBlank String isbn) {
-        return bookInventoryByIsbn(isbn).map(bi -> bi.getStock() > 0).orElse(null); // <4>
+    public Boolean stock(@NotBlank String isbn) { // <1>
+        return bookInventoryByIsbn(isbn).map(bi -> bi.getStock() > 0).orElse(null);
     }
 
     private Optional<BookInventory> bookInventoryByIsbn(String isbn) {

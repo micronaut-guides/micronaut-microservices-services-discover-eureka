@@ -1,35 +1,45 @@
 package example.micronaut.bookinventory;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import io.micronaut.core.annotation.Introspected;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Introspected
 public class BookInventory {
+
+    @NonNull
+    @NotBlank
     private String isbn;
+
+    @NonNull
+    @NotNull
     private Integer stock;
 
-    public BookInventory() {
-    }
+    public BookInventory() {}
 
-    public BookInventory(String isbn, Integer stock) {
+    public BookInventory(@NonNull @NotBlank String isbn, @NonNull @NotNull Integer stock) {
         this.isbn = isbn;
         this.stock = stock;
     }
 
+    @NonNull
     public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(@NonNull String isbn) {
         this.isbn = isbn;
     }
 
+    @NonNull
     public Integer getStock() {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(@NonNull Integer stock) {
         this.stock = stock;
     }
 
@@ -37,13 +47,17 @@ public class BookInventory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         BookInventory that = (BookInventory) o;
-        return Objects.equals(isbn, that.isbn) &&
-                Objects.equals(stock, that.stock);
+
+        if (!isbn.equals(that.isbn)) return false;
+        return stock.equals(that.stock);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isbn, stock);
+        int result = isbn.hashCode();
+        result = 31 * result + stock.hashCode();
+        return result;
     }
 }

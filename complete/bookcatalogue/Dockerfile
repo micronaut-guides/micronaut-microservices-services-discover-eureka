@@ -1,4 +1,4 @@
-FROM openjdk:8u171-alpine3.7
-RUN apk --no-cache add curl
-COPY build/libs/*-all.jar micronaut.jar
-CMD java ${JAVA_OPTS} -jar micronaut.jar
+FROM openjdk:14-alpine
+COPY build/libs/bookcatalogue-*-all.jar bookcatalogue.jar
+EXPOSE 8080
+CMD ["java", "-Dcom.sun.management.jmxremote", "-Xmx128m", "-jar", "bookcatalogue.jar"]

@@ -19,9 +19,9 @@ public class BookControllerTest {
     RxStreamingHttpClient client;
 
     @Test
-    public void testRetrieveBooks() throws Exception {
+    public void testRetrieveBooks() {
         Flowable<BookRecommendation> books = client.jsonStream(HttpRequest.GET("/books"), BookRecommendation.class);
-        assertEquals(1, books.toList().blockingGet().size());
-        assertEquals("Building Microservices", books.toList().blockingGet().get(0).getName());
+        assertEquals(books.toList().blockingGet().size(), 1);
+        assertEquals(books.toList().blockingGet().get(0).getName(), "Building Microservices");
     }
 }

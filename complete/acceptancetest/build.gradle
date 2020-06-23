@@ -3,19 +3,26 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
-    implementation 'org.codehaus.groovy:groovy-all:2.5.2'
+    compileOnly(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    compileOnly("io.micronaut:micronaut-inject-groovy")
+    implementation("io.micronaut.groovy:micronaut-runtime-groovy")
 
-    testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
-    testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
+    testImplementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    testImplementation("org.spockframework:spock-core") {
+        exclude group: "org.codehaus.groovy", module: "groovy-all"
+    }
+    testImplementation "io.micronaut:micronaut-http-client"
+    testImplementation "io.micronaut.security:micronaut-security-jwt"
+}
 
-    testCompile "io.micronaut:micronaut-runtime-groovy"
-    testCompile "io.micronaut:micronaut-http-client"
+// use JUnit 5 platform
+test {
+    useJUnitPlatform()
 }
 
 apply from: "${rootProject.projectDir}/gradle/testVerbose.gradle"

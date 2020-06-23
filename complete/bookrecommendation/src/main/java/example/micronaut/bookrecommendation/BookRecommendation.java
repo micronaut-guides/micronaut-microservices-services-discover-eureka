@@ -1,25 +1,28 @@
 package example.micronaut.bookrecommendation;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import io.micronaut.core.annotation.Introspected;
 
-import java.util.Objects;
+import javax.validation.constraints.NotBlank;
 
 @Introspected
 public class BookRecommendation {
+    @NonNull
+    @NotBlank
     private String name;
 
-    public BookRecommendation() {
-    }
+    public BookRecommendation() {}
 
-    public BookRecommendation(String name) {
+    public BookRecommendation(@NonNull @NotBlank String name) {
         this.name = name;
     }
 
+    @NonNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
@@ -27,12 +30,14 @@ public class BookRecommendation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         BookRecommendation that = (BookRecommendation) o;
-        return Objects.equals(name, that.name);
+
+        return name.equals(that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return name.hashCode();
     }
 }
